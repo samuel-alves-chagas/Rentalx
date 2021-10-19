@@ -1,3 +1,8 @@
+/**
+ * Os repositórios são responsáveis por fazer a manipulação de dados da aplicação,
+ *  tirando essa responsabilidade da rota
+ */
+
 import { Category } from "../model/Category";
 
 interface ICreateCategoryDTO {
