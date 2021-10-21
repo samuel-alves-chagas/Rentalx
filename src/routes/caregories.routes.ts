@@ -1,7 +1,7 @@
 import { Router } from "express";
 
+import { CategoriesRepository } from "../module/cars/repositories/CategoriesRepository";
 import { CreateCategoryService } from "../module/cars/services/CreateCategoryService";
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository(); // Instanciando a entidade de manipulação de dados
