@@ -1,21 +1,13 @@
 import { Router } from "express";
 
 import { CategoriesRepository } from "../module/cars/repositories/CategoriesRepository";
-import { CreateCategoryService } from "../module/cars/services/CreateCategoryService";
+import { createCategoryController } from "../module/cars/useCases/createCategory";
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository(); // Instanciando a entidade de manipulação de dados
 
 categoriesRoutes.post("/", (request, response) => {
-  const { name, description } = request.body;
-
-  // Instanciando um serviço responsável pelas regras de negócio da rota, tirando essa responsabilidade dela
-  const createCategoryService = new CreateCategoryService(categoriesRepository);
-
-  // Executando o serviço de regras de negócio, fazendo com que a rota não precise saber qual é o processo de criação de uma categoria de carro
-  createCategoryService.execute({ name, description });
-
-  return response.status(201).send();
+  return createCategoryController.handle(request, response);
 });
 
 categoriesRoutes.get("/", (request, response) => {
